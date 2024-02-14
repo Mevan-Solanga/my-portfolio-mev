@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import clsx from "clsx";
+import { PrismicPreview } from "@prismicio/next";
+import { createClient, repositoryName } from "@/prismicio";
 
-const inter = Inter({ subsets: ["latin"] });
+const urbanist = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="bg-slate-900 text-slate-100">
+      <body className={clsx (urbanist.className, "relatoive min-h")}>
+        <Header />
+        {children}
+        {/* <div className="h-[500vh]"></div> */}
+        <Footer/>
+      </body>
+      <PrismicPreview repositoryName={repositoryName}/>
     </html>
   );
 }
