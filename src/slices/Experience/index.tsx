@@ -3,14 +3,8 @@ import Heading from "@/components/Heading";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
-/**
- * Props for `Experience`.
- */
 export type ExperienceProps = SliceComponentProps<Content.ExperienceSlice>;
 
-/**
- * Component for "Experience" Slices.
- */
 const Experience = ({ slice }: ExperienceProps): JSX.Element => {
   return (
     <Bounded
@@ -26,12 +20,12 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
             {item.title}
           </Heading>
 
-          <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-400">
+          <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-500">
             <span>{item.time_period}</span>{" "}
             <span className="text-3xl font-extralight">/</span>{" "}
             <span>{item.institution}</span>
           </div>
-          <div className="prose prose-lg prose-invert mt-4">
+          <div className="prose prose-lg prose-invert mt-4 text-slate-500">
             <PrismicRichText field={item.description} />
           </div>
         </div>

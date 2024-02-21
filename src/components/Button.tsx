@@ -1,7 +1,7 @@
 import { KeyTextField, LinkField } from "@prismicio/client"
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import clsx from "clsx";
-import { MdArrowOutward } from "react-icons/md";
+import { BsBoxArrowInDown } from "react-icons/bs";
 
 type ButtonProps = {
     linkField : LinkField;
@@ -25,11 +25,12 @@ export default function Button ({
                 className,
             )}
         >
-            <span className="absolute inset-0 z-0 h-full translate-y-9 bg-yellow-300 transition-transform duration-300
+            <span className="absolute inset-0 z-0 h-full translate-y-9 bg-orange-400 transition-transform duration-300
             ease-in-out group-hover:translate-y-0"></span>
             <span className="relative flex items-center justify-center gap-2">
-                {label} {showIcon && <MdArrowOutward className="inlineblock"/>}
+                {label} {showIcon && <BsBoxArrowInDown className="inlineblock"/>}
             </span>
         </PrismicNextLink>
     );
 }
+

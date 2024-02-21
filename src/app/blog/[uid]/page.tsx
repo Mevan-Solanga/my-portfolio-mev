@@ -10,12 +10,7 @@ export default async function Page({ params }: { params: Params }) {
   const page = await client
     .getByUID("blog_post", params.uid)
     .catch(() => notFound());
-
-
-
-    return(
-      <ContentBody page = {page} />
-     );
+  return <ContentBody page={page} />;
 }
 
 export async function generateMetadata({

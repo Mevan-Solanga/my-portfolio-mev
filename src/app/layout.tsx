@@ -7,7 +7,9 @@ import clsx from "clsx";
 import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
 
-const urbanist = Urbanist({ subsets: ["latin"] });
+const urbanist = Urbanist({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,18 +18,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="bg-slate-900 text-slate-100">
-      <body className={clsx (urbanist.className, "relatoive min-h")}>
+    <html lang="en" className="bg-red-100 text-slate-100">
+      <body className={clsx(urbanist.className, "relative min-h")}>
         <Header />
         {children}
-        {/* <div className="h-[500vh]"></div> */}
-        <Footer/>
+        <Footer />
       </body>
-      <PrismicPreview repositoryName={repositoryName}/>
+      <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
 }
