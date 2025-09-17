@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -21,10 +23,32 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="bg-red-100 text-slate-100">
-      <body className={clsx(urbanist.className, "relative min-h")}>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+          `}
+        </Script>
+      </head>
+      <body className={clsx(urbanist.className, "relative min-h")}> 
         <Header />
         {children}
         <Footer />
+        {/* Vercel Analytics: force production mode and debug, point to preview deploy */}
+        <Analytics
+          mode="production"
+          debug
+          scriptSrc="https://solanga.vercel.app/_vercel/insights/script.js"
+          endpoint="https://solanga.vercel.app/_vercel/insights"
+        />
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
