@@ -102,7 +102,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             {slice.primary.tag_line}
           </span>
         </div>
-      </div>
+      </div>{" "}
     </Bounded>
   );
 };
